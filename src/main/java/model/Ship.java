@@ -11,4 +11,5 @@ public class Ship {
 
     private String name;
     private List<Square> shipSquares;
+    private Integer squaresNumber;
 }
