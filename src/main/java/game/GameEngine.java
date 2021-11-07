@@ -97,7 +97,6 @@ public class GameEngine {
                     List<String> allowedDirections = isEnoughSpaceForShip(ship.getSquaresNumber(), column, row, forbiddenSquares);
                     if (!allowedDirections.isEmpty()) {
                         String direction = allowedDirections.get(random.nextInt(allowedDirections.size()));
-                        System.out.println("Direction chosen: " + direction);
                         createShipSquares(ship, column, row, direction, forbiddenSquares);
                         protectShip(ship, forbiddenSquares);
                         break;
@@ -151,7 +150,6 @@ public class GameEngine {
             }
             if (checker) {
                 allowedDirections.add("LEFT");
-                System.out.println("added LEFT");
             }
         }
         if (row - squaresNumber >= 0) {
@@ -167,7 +165,6 @@ public class GameEngine {
             }
             if (checker) {
                 allowedDirections.add("UP");
-                System.out.println("added UP");
             }
         }
         if (column + squaresNumber - 1 <= 10) {
@@ -183,7 +180,6 @@ public class GameEngine {
             }
             if (checker) {
                 allowedDirections.add("RIGHT");
-                System.out.println("added RIGHT");
             }
         }
         if (row + squaresNumber - 1 <= 10) {
@@ -199,7 +195,6 @@ public class GameEngine {
             }
             if (checker) {
                 allowedDirections.add("DOWN");
-                System.out.println("added DOWN");
             }
         }
         return allowedDirections;
@@ -240,11 +235,9 @@ public class GameEngine {
             String columnName = String.valueOf(square.getCoordinates().charAt(0));
             int column = Arrays.asList(columnNames).indexOf(columnName);
             int row = Integer.valueOf(square.getCoordinates().substring(1));
-            System.out.println("PROTECT: column " + column + " & row " + row );
             for (int i = -1; i < 2; i++) {
                 for (int j = -1; j < 2; j++) {
                     if (column + i > 0 && column + i <= 10 && row + j > 0 && row + j <= 10) {
-                        System.out.println("PROTECT: column " + (column + i) + " & row " + (row + j));
                         Square protectedSquare = createSquare(column + i, row + j);
                         if (!forbiddenSquares.contains(protectedSquare)) {
                             forbiddenSquares.add(protectedSquare);
