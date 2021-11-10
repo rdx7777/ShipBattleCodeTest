@@ -34,7 +34,8 @@ public class ShipBuilder {
         int row;
         Square square;
         for (Ship ship : ships) {
-            while (true) {
+            boolean isShipCreated = false;
+            while (!isShipCreated) {
                 column = random.nextInt(10) + 1;
                 row = random.nextInt(10) + 1;
                 square = createSquare(column, row);
@@ -44,7 +45,7 @@ public class ShipBuilder {
                         String direction = allowedDirections.get(random.nextInt(allowedDirections.size()));
                         createShipSquares(ship, column, row, direction, forbiddenSquares);
                         protectShip(ship, forbiddenSquares);
-                        break;
+                        isShipCreated = true;
                     } else {
                         forbiddenSquares.add(square);
                     }
